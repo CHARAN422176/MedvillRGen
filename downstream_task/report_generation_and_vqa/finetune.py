@@ -241,7 +241,9 @@ def main():
         )
 
     logger.info("device: {} distributed training: {}, 16-bits training: {}".format(device,  bool(args.local_rank != -1), args.fp16))
-    torch.distributed.barrier()
+    # torch.distributed.barrier()
+    if args.world_size > 1:
+        torch.distributed.barrier()
     setup_for_distributed(args.local_rank == 0)
     torch.backends.cudnn.benchmark
 

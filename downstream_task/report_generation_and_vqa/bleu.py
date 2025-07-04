@@ -14,18 +14,18 @@ import numpy as np
 import pandas as pd
 
 from tqdm import tqdm
-from chexpert_labeler.loader import Loader
-from chexpert_labeler.stages import Extractor, Classifier, Aggregator
-from chexpert_labeler.constants.constants import *
+# from chexpert_labeler.loader import Loader
+# from chexpert_labeler.stages import Extractor, Classifier, Aggregator
+# from chexpert_labeler.constants.constants import *
 
 from sklearn.metrics import precision_score, recall_score, f1_score, accuracy_score, roc_auc_score, multilabel_confusion_matrix
 
-extractor = Extractor('downstream_task/report_generation_and_vqa/chexpert_labeler/phrases/mention',
-                        'downstream_task/report_generation_and_vqa/chexpert_labeler/phrases/unmention')
-classifier = Classifier('downstream_task/report_generation_and_vqa/chexpert_labeler/patterns/pre_negation_uncertainty.txt',
-                        'downstream_task/report_generation_and_vqa/chexpert_labeler/patterns/negation.txt',
-                        'downstream_task/report_generation_and_vqa/chexpert_labeler/patterns/post_negation_uncertainty.txt')
-aggregator = Aggregator(CATEGORIES)
+# extractor = Extractor('downstream_task/report_generation_and_vqa/chexpert_labeler/phrases/mention',
+#                         'downstream_task/report_generation_and_vqa/chexpert_labeler/phrases/unmention')
+# classifier = Classifier('downstream_task/report_generation_and_vqa/chexpert_labeler/patterns/pre_negation_uncertainty.txt',
+#                         'downstream_task/report_generation_and_vqa/chexpert_labeler/patterns/negation.txt',
+#                         'downstream_task/report_generation_and_vqa/chexpert_labeler/patterns/post_negation_uncertainty.txt')
+# aggregator = Aggregator(CATEGORIES)
 
 
 def label(hypo_path, ref_path, output_path):

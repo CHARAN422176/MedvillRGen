@@ -899,7 +899,9 @@ class ImageBertEmbeddings(nn.Module):
         )
         
         if self.args.img_postion:
-            position_ids = torch.tensor([0, seq_len-1], dtype=torch.long).cuda()
+            # position_ids = torch.tensor([0, seq_len-1], dtype=torch.long).cuda()
+            device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+            position_ids = torch.tensor([0, seq_len-1], dtype=torch.long).to(device)
             position_ids = position_ids.unsqueeze(0).expand(bsz, 2)
             position_embeddings = self.position_embeddings(position_ids)
             pos_vis_embeddings = self.position_embeddings(vis_pe)

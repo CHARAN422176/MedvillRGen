@@ -231,8 +231,15 @@ def main():
     device = torch.device("cpu")
 
     
-    torch.distributed.init_process_group(backend='nccl', init_method = args.dist_url, world_size=args.world_size, rank=args.global_rank)
-            
+    # torch.distributed.init_process_group(backend='nccl', init_method = args.dist_url, world_size=args.world_size, rank=args.global_rank)
+    if args.world_size > 1:
+        torch.distributed.init_process_group(
+            backend='nccl',
+            init_method=args.dist_url,
+            world_size=args.world_size,
+            rank=args.global_rank
+        )
+
     logger.info("device: {} distributed training: {}, 16-bits training: {}".format(device,  bool(args.local_rank != -1), args.fp16))
     torch.distributed.barrier()
     setup_for_distributed(args.local_rank == 0)

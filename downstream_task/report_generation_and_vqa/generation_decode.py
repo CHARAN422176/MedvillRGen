@@ -212,7 +212,7 @@ def main():
 
             eval_lst = []
             if 'openi' in re.split(r'[ _/]', args.model_recover_path):
-                args.src_file = '/home/jhmoon/MedViLL/data/openi/Test.jsonl'
+                args.src_file = '/kaggle/working/MedvillRGen/data/openi/Test.jsonll'
                 print("OpenI data load")
             elif 'mimic' in re.split(r'[ _/]', args.model_recover_path):
                 args.src_file = '/home/jhmoon/MedViLL/data/mimic/Test.jsonl'

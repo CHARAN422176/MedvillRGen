@@ -3,7 +3,7 @@ import warnings
 import re
 import bioc
 import pandas as pd
-from negbio.negbio.pipeline import text2bioc, ssplit, section_split
+from chexpert_labeler.negbio.negbio.pipeline import text2bioc, ssplit, section_split
 
 from constants import *
 

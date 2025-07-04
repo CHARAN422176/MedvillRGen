@@ -182,7 +182,7 @@ def main():
     # args.local_rank = int(os.environ['LOCAL_RANK'])
     # args.global_rank = int(os.environ["RANK"])
     # args.world_size = int(os.environ['WORLD_SIZE'])
-    args.local_rank = int(os.environ.get('LOCAL_RANK', -1))
+    args.local_rank = int(os.environ.get('LOCAL_RANK', 0))
     args.global_rank = int(os.environ.get('RANK', 0))
     args.world_size = int(os.environ.get('WORLD_SIZE', 1))
 

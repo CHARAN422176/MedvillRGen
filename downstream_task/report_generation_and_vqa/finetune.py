@@ -226,8 +226,10 @@ def main():
         level=logging.INFO)
     logger = logging.getLogger(__name__)
 
-    torch.cuda.set_device(args.local_rank)
-    device = torch.device("cuda", args.local_rank)
+    # torch.cuda.set_device(args.local_rank)
+    # device = torch.device("cuda", args.local_rank)
+    device = torch.device("cpu")
+
     
     torch.distributed.init_process_group(backend='nccl', init_method = args.dist_url, world_size=args.world_size, rank=args.global_rank)
             

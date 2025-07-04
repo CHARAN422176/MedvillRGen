@@ -179,9 +179,12 @@ def main():
                         help="Use different projection layers for tasks.")
 
     args = parser.parse_args()
-    args.local_rank = int(os.environ['LOCAL_RANK'])
-    args.global_rank = int(os.environ["RANK"])
-    args.world_size = int(os.environ['WORLD_SIZE'])
+    # args.local_rank = int(os.environ['LOCAL_RANK'])
+    # args.global_rank = int(os.environ["RANK"])
+    # args.world_size = int(os.environ['WORLD_SIZE'])
+    args.local_rank = int(os.environ.get('LOCAL_RANK', -1))
+    args.global_rank = int(os.environ.get('RANK', 0))
+    args.world_size = int(os.environ.get('WORLD_SIZE', 1))
 
     if args.model_recover_path !=None:
         args.exp_name = args.model_recover_path.split('/')[-2]

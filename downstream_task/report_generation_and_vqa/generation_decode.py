@@ -261,6 +261,7 @@ def main():
                     buf_id = [x[0] for x in _chunk] # img id
                     buf = [x[2] for x in _chunk]  #img path
                     gt_report = [x[-1] for x in _chunk]
+                    print(f"Processed batch: {next_i}/{len(input_lines)}", flush=True)
                     next_i += args.batch_size
 
                     instances = []
@@ -304,6 +305,7 @@ def main():
                                 total_score.append(ppl.item())
                             else:
                                 pass
+                        
                 end = time.time()
                 print(end - start)
                 exit()

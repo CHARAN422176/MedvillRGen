@@ -60,7 +60,7 @@ def setup_for_distributed(is_master):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--generation_dataset", default='mimic-cxr', type=str, help=["mimic-cxr, openi"])
+    parser.add_argument("--generation_dataset", default='openi', type=str, help=["mimic-cxr, openi"])
     parser.add_argument("--vqa_rad", default="all", type=str, choices=["all", "chest", "head", "abd"])
     parser.add_argument("--data_set", default="train", type=str, help="train | valid")
     parser.add_argument('--img_hidden_sz', type=int, default=2048, help="Whether to use amp for fp16")
@@ -91,7 +91,7 @@ def main():
     parser.add_argument('--hidden_size', type=int, default=768)
     # parser.add_argument('--hidden_size', type=int, default=512)
     parser.add_argument('--bar', default=False, type=str,help="True or False")
-    parser.add_argument("--model_recover_path", default=None, type=str,
+    parser.add_argument("--model_recover_path", default='/kaggle/input/medvill/other/default/1/par/pytorch_model.bin', type=str,
                         help="The file of fine-tuned pretraining model. ex)'./pretrained_model/pytorch_model.bin'") # model load
     parser.add_argument("--output_dir",
                         default='/home/edlab/jhmoon/mimic_mv_real/mimic-cxr/downstream_model/',
@@ -163,7 +163,7 @@ def main():
     parser.add_argument('--max_position_embeddings', type=int, default=None,
                         help="max position embeddings")
 
-    parser.add_argument('--image_root', type=str, default='../../data/mimic/re_512_3ch/Train')
+    parser.add_argument('--image_root', type=str, default='/kaggle/input/open-i/home/data_storage/mimic-cxr/dataset/open_i/image_preprocessing/512_3ch')
     parser.add_argument('--split', type=str, nargs='+', default=['train', 'valid'])
 
     parser.add_argument('--dist_url', default='env://', help='url used to set up distributed training')

@@ -218,7 +218,8 @@ def language_eval_bleu(model_recover_path, eval_model, preds):
     gt.close()
     gen.close()
 
-    labeled_hypothesis, labeled_reference = label(hypothesis_path, reference_path, output_path=model_recover_path.split('.')[0])
-    metric_pos1 = get_label_accuracy(labeled_hypothesis, labeled_reference)
+    # labeled_hypothesis, labeled_reference = label(hypothesis_path, reference_path, output_path=model_recover_path.split('.')[0])
+    # metric_pos1 = get_label_accuracy(labeled_hypothesis, labeled_reference)
 
-    return bleu_1gram, bleu_2gram, bleu_3gram, bleu_4gram, metric_pos1
+    return bleu_1gram, bleu_2gram, bleu_3gram, bleu_4gram
+    # return bleu_1gram, bleu_2gram, bleu_3gram, bleu_4gram, metric_pos1

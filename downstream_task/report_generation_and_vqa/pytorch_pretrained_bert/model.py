@@ -54,7 +54,11 @@ class pixel_full_sampling(nn.Module):
         out = out.transpose(1, 2).contiguous() #out torch.Size([100, 3, 2048])
         # print("33 out", out.shape)
         
-        vis_pe = torch.arange(out.size()[1], dtype=torch.long).cuda()
+
+        # vis_pe = torch.arange(out.size()[1], dtype=torch.long).cuda()
+        device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+        vis_pe = torch.arange(out.size()[1], dtype=torch.long).to(device)
+
         vis_pe = vis_pe.unsqueeze(0).expand(out.size()[0], out.size()[1])
         
         # print("out", out.shape)

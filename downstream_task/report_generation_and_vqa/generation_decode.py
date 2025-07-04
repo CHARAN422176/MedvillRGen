@@ -211,7 +211,7 @@ def main():
             torch.cuda.empty_cache()
 
             eval_lst = []
-            if 'openi' in re.split(r'[ _/]', args.model_recover_path):
+            if 'openi' or 'medvill' in re.split(r'[ _/]', args.model_recover_path):
                 args.src_file = '/kaggle/working/MedvillRGen/data/openi/Test.jsonl'
                 print("OpenI data load")
             elif 'mimic' in re.split(r'[ _/]', args.model_recover_path):

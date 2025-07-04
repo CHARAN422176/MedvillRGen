@@ -176,7 +176,8 @@ def main():
     for model_recover_path in glob.glob(args.model_recover_path.strip()):
         for bootstrap in range(1,args.random_bootstrap_testnum+1):
             logger.info("***** Recover model: %s *****", args.model_recover_path)
-            model_recover = torch.load(args.model_recover_path)
+            # model_recover = torch.load(args.model_recover_path)
+            model_recover = torch.load(args.model_recover_path, map_location=torch.device('cpu'))
 
             for key in list(model_recover.keys()):
                 model_recover[key.replace('txt_embeddings', 'bert.txt_embeddings'). replace('img_embeddings', 'bert.img_embeddings'). replace('img_encoder.model', 'bert.img_encoder.model'). replace('encoder.layer', 'bert.encoder.layer'). replace('pooler', 'bert.pooler')] = model_recover.pop(key)

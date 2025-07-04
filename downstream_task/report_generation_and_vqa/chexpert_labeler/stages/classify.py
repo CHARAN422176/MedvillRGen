@@ -3,7 +3,7 @@ import logging
 from pathlib import Path
 from chexpert_labeler.negbio.negbio.pipeline import parse, ptb2ud, negdetect
 from chexpert_labeler.negbio.negbio.neg import semgraph, propagator, neg_detector
-from negbio import ngrex
+from chexpert_labeler.negbio.negbio import ngrex
 from tqdm import tqdm
 
 from constants import *

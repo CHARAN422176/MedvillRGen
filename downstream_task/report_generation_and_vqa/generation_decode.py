@@ -313,8 +313,11 @@ def main():
             if args.beam_size == 1:
                 predictions = [{'image_id': tup[1], 'gt_caption': tup[-1], 'gt_label': tup[-2], 'gen_caption': output_lines[img_idx]} for img_idx, tup in enumerate(input_lines)]
                 print("avg ppl: ",np.mean(total_score))
+                working_dir = '/kaggle/working'
+
                 # a,b,c,d, metric_pos1 = language_eval_bleu(args.model_recover_path, str(round(np.mean(total_score), 2))+'ppl_'+str(bootstrap)+'th_test', predictions)
-                a,b,c,d = language_eval_bleu(args.model_recover_path, str(round(np.mean(total_score), 2))+'ppl_'+str(bootstrap)+'th_test', predictions)
+                # a,b,c,d = language_eval_bleu(args.model_recover_path, str(round(np.mean(total_score), 2))+'ppl_'+str(bootstrap)+'th_test', predictions)
+                a,b,c,d = language_eval_bleu(working_dir, str(round(np.mean(total_score), 2))+'ppl_'+str(bootstrap)+'th_test', predictions)
                 max_a.append(a)
                 max_b.append(b)
                 max_c.append(c)
